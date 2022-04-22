@@ -25,3 +25,10 @@ $obRouter->get('/tutorial/oqueesql',[
         return new Response(200, Tutorial\Tutorial::getOqueeSql($request));
     }
     ]);
+
+//ROTA Tutorial Introdução a Banco de Dados
+$obRouter->get('/tutorial/introducaoabancodedados',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getIntroducaoaBancodeDados($request));
+    }
+    ]);

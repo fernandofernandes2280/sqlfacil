@@ -32,8 +32,12 @@ class Page{
 	        'label' => 'O que é SQL',
 	        'link' => URL.'/tutorial/oqueesql'
 	    ],
+	    'introducaoabancodedados' =>[
+	        'label' => 'Introdução a Banco de Dados',
+	        'link' => URL.'/tutorial/introducaoabancodedados'
+	    ],
 	];
-
+	
 	//Método responsável por renderizar a view do menu Vertical do painel Tutorial
 	private static function getMenuVertical($currentModule){
 	    //Links do Menu

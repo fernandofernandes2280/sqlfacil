@@ -49,6 +49,21 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) Tutoral O que é Sql
+	public static function getIntroducaoaBancodeDados($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/introducaoabancodedados',[]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'introducaoabancodedados', '');
+	    
+	}
+	
+	
 	
 	
 	
