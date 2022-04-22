@@ -9,14 +9,17 @@ class Home extends Page{
 	
 	//retorna o conteudo (view) da nossa home
 	public static function getHome(){
-		$obOrganization = new Organization();
-		
-		
-		$content = View::render('pages/home',[
-				'name' => $obOrganization->name
-		]);
-		
-		return parent::getPage('HOME > WDEV', $content);
+	    
+	    //View da Sobre
+	    $content = View::render('pages/home',[
+	        
+	   
+	        
+	        
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent::getPanel('SqlFácil > Home', $content,'home', '');
 		
 	}
 	

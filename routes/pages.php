@@ -3,6 +3,7 @@
 
 use \App\Http\Response;
 use \App\Controller\Pages;
+use \App\Controller\Tutorial;
 
 //ROTA HOME
 $obRouter->get('',[
@@ -12,6 +13,11 @@ $obRouter->get('',[
 		}
 		]);
 
+
+
+
+
+
 //ROTA SOBRE
 $obRouter->get('/sobre',[
 		function (){
@@ -19,12 +25,6 @@ $obRouter->get('/sobre',[
 		}
 		]);
 
-//ROTA depoimentos
-$obRouter->get('/depoimentos',[
-		function ($request){
-			return new Response(200, Pages\Testimony::getTestimonies($request));
-		}
-		]);
 
 //ROTA depoimentos (Insert)
 $obRouter->post('/depoimentos',[

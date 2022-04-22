@@ -2,22 +2,72 @@
 
 namespace App\Controller\Pages;
 
-use \App\Utils\View;
+use App\Utils\View;
 
 class Page{
 	
+	//Módulos disponíveis no painel
+	private static $modules = [
+		'home' =>[
+				'label' => 'Home',
+				'link' => URL.'/'
+		],
+		'testimonies' =>[
+				'label' => 'Depoimentos',
+				'link' => URL.'/testimonies'
+		],
+		'tutorial' =>[
+				'label' => 'Tutorial',
+				'link' => URL.'/tutorial'
+		]
+			
+			
+	];
 	
-	//metodo responsavel por renderizar o topo da pagina
-	private static function getHeader(){
+	//Método responsavel por retornar o conteudo (view) da estrutura generica de página do painel
+	public static function getPage($title, $content){
+		return View::render('pages/page',[
+				'title' => $title,
+				'content' => $content
+		]);
+	}
+	
+	//Método responsável por renderizar a view do menu do painel
+	private static function getMenu($currentModule){
 		
-		return View::render('pages/header');
+		//Links do Menu
+		$links ='';
+		
+		//Itera os módulos
+		foreach (self::$modules as $hash=>$module){
+			$links .= View::render('pages/menu/link',[
+					'label' => $module['label'],
+					'link' => $module['link'],
+					'current' => $hash == $currentModule ? 'text-danger' : ''
+ 					
+			]);
+			
+		}
+		
+		//Retorna a renderização do menu
+		return View::render('pages/menu/box',[
+				'links' => $links
+		]);
 		
 	}
 	
-	//metodo responsavel por renderizar o topo da pagina
-	private static function getFooter(){
+	
+	//Método resposanvel por renderizar a view do painel com conteúdos dinâmicos
+	public static function getPanel($title, $content, $currentModule){
 		
-		return View::render('pages/footer');
+		//Renderiza a view do painel
+		$contentPanel = View::render('pages/tutorial/panel',[
+				'menu' => self::getMenu($currentModule),
+				'content' => $content
+		]);
+		
+		//Retorna a página renderizada
+		return self::getPage($title, $contentPanel);
 		
 	}
 	
@@ -43,12 +93,12 @@ class Page{
 			
 			//Altera a página
 			$queryParams['page'] = $page['page'];
-						
+			
 			//Link
 			$link = $url.'?'.http_build_query($queryParams);
 			
 			//view
-			$links .= View::render('pages/pagination/link',[
+			$links .= View::render('admin/pagination/link',[
 					'page' => $page['page'],
 					'link' => $link,
 					'active' => $page['current'] ? 'active' : ''
@@ -56,7 +106,7 @@ class Page{
 		}
 		
 		//Renderiza box de paginação
-		return View::render('pages/pagination/box',[
+		return View::render('admin/pagination/box',[
 				'links' => $links
 				
 		]);
@@ -66,19 +116,5 @@ class Page{
 		
 	}
 	
-	
-	
-	//retorna o conteudo (view) da nossa página genérica
-	public static function getPage($title, $content){
-		
-		return View::render('pages/page',[
-				'title' => $title,
-				'header' => self::getHeader(),
-				'content' => $content,
-				'footer' => self::getFooter()
-				
-		]);
-		
-	}
 	
 }

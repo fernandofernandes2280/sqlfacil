@@ -1,0 +1,195 @@
+<?php
+    if (session_status() == PHP_SESSION_NONE) { session_start(); }
+    $_GET['n']=1;
+    include_once '../cabecalho.php';
+    $corTitulo = 'blue';
+    $corSubTitulo = 'red';
+    include_once "../funcoes/funcoes.php";
+    finalizaSessao();
+?>
+<link href="{{URL}}/resources/assets/css/tutorial.css" rel="stylesheet" />
+<script type="text/javascript" src="{{URL}}/resources/assets/js/tutorial.js"></script>
+<body>
+    <div class="container-fluid">
+        <div class="row" >
+            <!--div tópicos-->
+            <div class="col-xs-12 col-md-12 col-lg-3" style="overflow-y: auto; height: 100%; " datas-spy="affix"  >
+              <nav>
+                  <ul id="menu" class="nav nav-pills nav-stacked">
+                      <li class="active"><a href="comandosql_importante.php">Antes de Começar</a></li>
+                      <li><a href="comandosql_oqueesql.php">O que é SQL?</a></li>
+                      <li><a  href="comandosql_introducaobd.php">Introdução a Banco de Dados</a></li>
+                      <li><a><label>COMANDOS BÁSICOS</label></a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_createdb.php">Create Database</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_showdb.php">Show Databases</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_usedb.php">Uses Databases</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_createtable.php">Create Table</a> </li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_showtable.php">Show Tables</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_showcolumns.php">Show Columns</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_altertable.php">Alter Table</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_constraint.php">Restrições (Constraints)</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_insert.php">Insert</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_select.php">Select</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_orderby.php">Clausula ORDER BY </a></li>
+                      <li style="margin-left: 30px;"><a  style="width: 252px;" href="comandosql_update.php">Update</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_delete.php">Delete</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_droptable.php">Drop Table</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_truncatetable.php">Truncate Table</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_dropdatabase.php">Drop Database</a></li>
+                      <li><a><label>COMANDOS AVANÇADOS</label></a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_juntandotabelas.php">Juntando Tabelas (JOIN)</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_innerjoin.php">INNER JOIN</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_leftjoin.php">LEFT JOIN</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_rightjoin.php">RIGHT JOIN</a></li>
+                      <li style="margin-left: 30px;"><a style="width: 252px;"  href="comandosql_union.php">UNION</a></li>
+                      <li style="font-weight: bold;"><a href="comandosql_referencias.php">Referências</a></li>
+                  </ul>
+              </nav>
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-5 conteudo" id="conteudo" style="overflow-y: auto; height: 100%; border: 1px solid "  >
+              <img src="../gifs/carregando.gif" id="carregando" />
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-4" style="height: 100%; "   >
+              <form id="formresposta" name="formresposta" onsubmit="selectOption(); return false;" >
+                  <table class="table" style="font-weight: bold;">
+                      <tr>
+                          <td><font size=3>Treine Aqui os Comandos SQL:</font></td>
+                      </tr>
+                      <tr>
+                          <td>
+                               Banco: <input type="text" name="banco" id="banco" class="form-control" readonly />
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="2">
+                              <textarea class="form-control" rows="5" name="resposta" id="resposta"  style="font-size: 100%" OnPaste="return naoColarTexto();" placeholder="Digite aqui os comandos SQL"></textarea>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <input type="hidden" name="oculto" value="efetuar"/>
+                              <input name="executar" type="button" id="executar" value="Executar <Enter>" class="btn btn-azul" />
+                              <input name="limpar" id="limpar" type="button" value="Limpar <Esc>" class="btn btn-atencao " onclick="javascript:limpaCampos();"/>
+                          </td>
+                      </tr>
+                  </table>
+                  <div class="row" style="margin-left: 5px;">
+                      <label><font font size=3>Resultado:</font></label>
+                      <div class="col-xs-12 col-md-12 col-lg-12 form-control" style="overflow: auto; height: 40%; width: 95%"  id="resultado" name="resultado" >
+                      </div>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+//carrega comandos sql ao clicar no link
+$("ul#menu a").click(function(){
+    pagina = $(this).attr('href');
+    $("#conteudo").load(pagina);
+    //desabilita o link
+    return false;
+});
+    //executa função ao carregar/atualizar página
+     window.onload = function(){
+         if(sessionStorage.getItem('nomeBancoTutorial')!= 'null'){//verifica se sessão existe
+         //$('#selectBanco').val(sessionStorage.getItem('nomeBancoTutorial'));//atribui nome da sessao ao selec
+         document.getElementById("banco").value = sessionStorage.getItem('nomeBancoTutorial');//atribui nome da sessao ao textArea
+         }else{
+             document.getElementById("banco").value = '';
+         }
+     }
+
+    document.onkeyup=function(e){
+        if(e.which == 27){
+            $('#limpar').click();
+            return false;
+        }
+    }
+
+    $(document).keypress(function(e) {//ativa botao executar com a tecla enter
+        if(e.which == 13) $('#executar').click();
+    });
+    /*
+    //aponta o banco selecionado com USE, no select
+    $("#selectBanco").on('change', function(e){
+        document.getElementById("banco").innerHTML = $(this).val();
+        sessionStorage.setItem('nomeBancoTutorial',$(this).val());
+      //alert($(this).val())
+      return false;
+    });*/
+
+    function limpaCampos(){
+        document.getElementById('resposta').value='';
+        //document.getElementById("resultado").style.background = "#FFF"
+        //document.getElementById("resultado").style.color = "#000"
+        //document.getElementById("resultado").innerHTML = '';
+
+    }
+
+    //bloqueia a opcao de colar texto
+    function naoColarTexto() {
+        alert('Não deixe a preguiça atrapalhar seu sucesso!');
+        return false;
+    }
+
+
+//funcao pra verificar resposta
+$(document).ready(function (){
+    $("#executar").click(function (){
+        //codigo ajax para buscar a resposta do comando
+       var form = new FormData($("#formresposta")[0]);
+       $.ajax({
+           url: 'treineSql.php',
+           type: 'post',
+           dataType: 'json',
+           cache: false,
+           processData: false,
+           contentType: false,
+           data: form,
+
+           timeout: 8000,
+           success: function(resultado){ 
+                //mostra resultado no txteArea resultado
+               $("#resultado").html(resultado[0]);
+               //recebe o valor do txtArea para mudar a cor para(verde ou vermelho)
+              var mensagem = document.getElementById("resultado").value;
+              var textArea = document.getElementById("resultado");
+              // faz a comparacao aqui
+               if ((resultado[0] == "Comando executado com Sucesso!") || (resultado[0].substr(1, [5])=="table")){
+                   textArea.style.color = "green";
+                   textArea.style.background = "#98FB98";
+
+                   //compara resultado[3] do treinasql.php com comando 'USE'
+                   if (resultado[3] == 'USE'){//busca no select pelo banco selecionado
+                        var nomeBanco = resultado[1];//recebe o nome do banco selecionado
+                        document.getElementById("banco").value = nomeBanco;
+                       //cria a sessao com o nome do banco atual
+                        sessionStorage.setItem('nomeBancoTutorial',nomeBanco);
+
+                    }
+
+                    if (resultado[3] == 'SELECT'){
+                         //$("#resultado").html(resultado[0]+'<br>'+resultado[2]);
+                         $("#resultado").html(resultado[2]);
+                    }
+                    if (resultado[3] == 'SHOWTABLES'){
+                        // $("#resultado").html(resultado[0]+'<br>'+resultado[2]);
+                         $("#resultado").html(resultado[2]);
+                    }
+                    if (resultado[3] == 'DROPDATABASE'){
+                        sessionStorage.setItem('nomeBancoTutorial','');
+                        document.getElementById("banco").value = '';
+                    }
+               }else{
+                       textArea.style.color = "red";
+                       textArea.style.background = "#e4b9b9";
+                    }
+           }
+       });
+
+    });
+});
+</script>

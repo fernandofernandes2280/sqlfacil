@@ -22,7 +22,7 @@ class Login extends Page{
 		
 		
 		//Retornar a página completa
-		return parent::getPage('Login > WDEV', $content);
+		return parent::getPage('Login > SQLFácil', $content);
 		
 	}
 	
@@ -38,14 +38,14 @@ class Login extends Page{
 		
 		//busca usuário pelo e-mail
 		$obUser = User::getUserByEmail($email);
-		
+	
 		if(!$obUser instanceof User){
-			return self::getLogin($request,'E-mail ou senha inválidos');
+			return self::getLogin($request,'E-mail ou senha inválidos-Email');
 		}
 		
 		//Verifica a senha do usuário
 		if(!password_verify($senha, $obUser->senha)){
-			return self::getLogin($request,'E-mail ou senha inválidos');
+			return self::getLogin($request,'E-mail ou senha inválidos-Senha');
 		}
 		
 		//Cria a sessão de Login
