@@ -77,7 +77,19 @@ class Tutorial extends Page{
 	    
 	}
 	
-	
+	//retorna o conteudo (view) Tutoral Create Database
+	public static function getShowDatabases($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/showdatabases',[]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'showdatabases', '');
+	    
+	}
 	
 	
 	

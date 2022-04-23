@@ -39,3 +39,22 @@ $obRouter->get('/tutorial/createdatabase',[
         return new Response(200, Tutorial\Tutorial::getCreateDatabase($request));
     }
     ]);
+
+//ROTA Tutorial Show Databases
+$obRouter->get('/tutorial/showdatabases',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getShowDatabases($request));
+    }
+    ]);
+
+
+
+
+
+
+
+
+
+
+
+

@@ -53,6 +53,12 @@ class Page{
 	        'link' => URL.'/tutorial/createdatabase',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'showdatabases' =>[
+	        'label' => 'Show Databases',
+	        'link' => URL.'/tutorial/showdatabases',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	
