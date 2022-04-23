@@ -49,7 +49,7 @@ class Tutorial extends Page{
 	    
 	}
 	
-	//retorna o conteudo (view) Tutoral O que é Sql
+	//retorna o conteudo (view) Tutoral Introducao a Banco de Dados
 	public static function getIntroducaoaBancodeDados($request){
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
@@ -63,6 +63,19 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) Tutoral Create Database
+	public static function getCreateDatabase($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'createdatabase', '');
+	    
+	}
 	
 	
 	

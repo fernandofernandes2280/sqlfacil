@@ -32,3 +32,10 @@ $obRouter->get('/tutorial/introducaoabancodedados',[
         return new Response(200, Tutorial\Tutorial::getIntroducaoaBancodeDados($request));
     }
     ]);
+
+//ROTA Tutorial Create Database
+$obRouter->get('/tutorial/createdatabase',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getCreateDatabase($request));
+    }
+    ]);

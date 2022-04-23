@@ -26,29 +26,50 @@ class Page{
 	private static $modulesVertical = [
 	    'antesdecomecar' =>[
 	        'label' => 'Antes de Começar',
-	        'link' => URL.'/tutorial/antesdecomecar'
-	    ],
-	    'oqueesql' =>[
-	        'label' => 'O que é SQL',
-	        'link' => URL.'/tutorial/oqueesql'
+	        'link' => URL.'/tutorial/antesdecomecar',
+	        'classe' => '',
+	        'icon' => 'noise_control_off'
 	    ],
 	    'introducaoabancodedados' =>[
 	        'label' => 'Introdução a Banco de Dados',
-	        'link' => URL.'/tutorial/introducaoabancodedados'
+	        'link' => URL.'/tutorial/introducaoabancodedados',
+	        'classe' => '',
+	        'icon' => 'noise_control_off'
 	    ],
+	    'oqueesql' =>[
+	        'label' => 'O que é SQL',
+	        'link' => URL.'/tutorial/oqueesql',
+            'classe' => '',
+	        'icon' => 'noise_control_off'
+	    ],
+	    'comandosbasicos' =>[
+	        'label' => 'Comandos Básicos',
+	        'link' => '',
+	        'classe' => '',
+	        'icon' => 'arrow_drop_down'
+	    ],
+	    'createdatabase' =>[
+	        'label' => 'Create Database',
+	        'link' => URL.'/tutorial/createdatabase',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
+	    ]
 	];
 	
 	//Método responsável por renderizar a view do menu Vertical do painel Tutorial
 	private static function getMenuVertical($currentModule){
-	    //Links do Menu
+	        
+	        //Links do Menu
 	    $links ='';
 	    //Itera os módulos
 	    foreach (self::$modulesVertical as $hash=>$module){
 	        $links .= View::render('pages/tutorial/menu/link',[
 	            'label' => $module['label'],
 	            'link' => $module['link'],
+	            'classe' => $module['classe'],
+	            'icon' => $module['icon'],
 	            //'current' => $hash == $currentModule ? 'text-danger' : ''
-	            'current' => $hash == $currentModule ? 'style="font-weight:bold;"' : ''
+	            'current' => $hash == $currentModule ? 'active"  style="font-weight:bold;' : ''
 	            
 	        ]);
 	    }

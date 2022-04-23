@@ -618,6 +618,7 @@ pre {
   margin-bottom: 1rem;
   overflow: auto;
   -ms-overflow-style: scrollbar;
+  background-color: #fff;
 }
 
 figure {
@@ -4268,7 +4269,15 @@ tbody.collapse.show {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 1rem;  
+  margin-top: 0.1rem;
+ 
+}
+
+.nav-link-subitem {
+
+  margin-left: 1.5rem;
+ 
 }
 
 .nav-link:hover,
@@ -4319,7 +4328,7 @@ tbody.collapse.show {
 }
 
 .nav-pills .nav-link {
-  border-radius: 0.25rem;
+  border-radius: 0.25rem; 
 }
 
 .nav-pills .nav-link.active,
