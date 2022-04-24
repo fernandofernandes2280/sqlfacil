@@ -83,6 +83,12 @@ class Page{
 	        'link' => URL.'/tutorial/showcolumns',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'Alter Table' =>[
+	        'label' => 'Alter Table',
+	        'link' => URL.'/tutorial/altertable',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

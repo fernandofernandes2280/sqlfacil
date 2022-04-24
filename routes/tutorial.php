@@ -79,6 +79,12 @@ $obRouter->get('/tutorial/showcolumns',[
     ]);
 
 
+//ROTA Tutorial Alter Table
+$obRouter->get('/tutorial/altertable',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getAlterTable($request));
+    }
+    ]);
 
 
 

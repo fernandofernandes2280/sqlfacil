@@ -160,6 +160,22 @@ class Tutorial extends Page{
 	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'showcolumns', '');
 	    
 	}
+	//retorna o conteudo (view) Tutoral Alter Table
+	public static function getAlterTable($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'descricao' => View::render('pages/tutorial/comandosSql/altertable',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/alter-table.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'altertable', '');
+	    
+	}
 	
 	
 }
