@@ -68,7 +68,10 @@ class Tutorial extends Page{
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
-	        'comandosSql' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+            'descricao' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
+            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-database.html'
+	        ]),
 	        'treineSql' => ''
 	    ]);
 	    
@@ -77,12 +80,15 @@ class Tutorial extends Page{
 	    
 	}
 	
-	//retorna o conteudo (view) Tutoral Create Database
+	//retorna o conteudo (view) Tutoral ShOW Database
 	public static function getShowDatabases($request){
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
-	        'comandosSql' => View::render('pages/tutorial/comandosSql/showdatabases',[]),
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+            'descricao' => View::render('pages/tutorial/comandosSql/showdatabases',[]),
+            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-databases.html'
+            ]),
 	        'treineSql' => ''
 	    ]);
 	    
@@ -90,7 +96,54 @@ class Tutorial extends Page{
 	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'showdatabases', '');
 	    
 	}
-	
+	//retorna o conteudo (view) Tutoral USE DATABASE
+	public static function getUseDatabase($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+            'descricao' => View::render('pages/tutorial/comandosSql/usedatabase',[]),
+            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/database-use.html' 
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'usedatabase', '');
+	    
+	}
+	//retorna o conteudo (view) Tutoral CREATE TABLE
+	public static function getCreateTable($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+            'descricao' => View::render('pages/tutorial/comandosSql/createtable',[]),
+            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-table.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'createtable', '');
+	    
+	}
+	//retorna o conteudo (view) Tutoral ShowTables
+	public static function getShowTables($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'descricao' => View::render('pages/tutorial/comandosSql/showtables',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-tables.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'showtables', '');
+	    
+	}
 	
 	
 }

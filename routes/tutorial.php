@@ -48,8 +48,28 @@ $obRouter->get('/tutorial/showdatabases',[
     ]);
 
 
+//ROTA Tutorial USE Database
+$obRouter->get('/tutorial/usedatabase',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getUseDatabase($request));
+    }
+    ]);
 
 
+//ROTA Tutorial Create Table
+$obRouter->get('/tutorial/createtable',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getCreateTable($request));
+    }
+    ]);
+
+
+//ROTA Tutorial showtables
+$obRouter->get('/tutorial/showtables',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getShowTables($request));
+    }
+    ]);
 
 
 

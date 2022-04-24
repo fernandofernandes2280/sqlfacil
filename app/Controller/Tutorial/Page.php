@@ -59,6 +59,24 @@ class Page{
 	        'link' => URL.'/tutorial/showdatabases',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'usedatabase' =>[
+	        'label' => 'Use Database',
+	        'link' => URL.'/tutorial/usedatabase',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
+	    ],
+	    'createtable' =>[
+	        'label' => 'Create Table',
+	        'link' => URL.'/tutorial/createtable',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
+	    ],
+	    'showtables' =>[
+	        'label' => 'Show Tables',
+	        'link' => URL.'/tutorial/showtables',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	
