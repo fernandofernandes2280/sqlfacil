@@ -144,6 +144,22 @@ class Tutorial extends Page{
 	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'showtables', '');
 	    
 	}
+	//retorna o conteudo (view) Tutoral ShowTables
+	public static function getShowColumns($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'descricao' => View::render('pages/tutorial/comandosSql/showcolumns',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-columns.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'showcolumns', '');
+	    
+	}
 	
 	
 }

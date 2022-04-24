@@ -71,7 +71,12 @@ $obRouter->get('/tutorial/showtables',[
     }
     ]);
 
-
+//ROTA Tutorial showcolumns
+$obRouter->get('/tutorial/showcolumns',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getShowColumns($request));
+    }
+    ]);
 
 
 

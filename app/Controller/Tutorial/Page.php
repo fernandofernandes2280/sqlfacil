@@ -77,6 +77,12 @@ class Page{
 	        'link' => URL.'/tutorial/showtables',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'showcolumns' =>[
+	        'label' => 'Show Columns',
+	        'link' => URL.'/tutorial/showcolumns',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	
