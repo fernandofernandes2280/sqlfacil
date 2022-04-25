@@ -85,7 +85,12 @@ $obRouter->get('/tutorial/altertable',[
         return new Response(200, Tutorial\Tutorial::getAlterTable($request));
     }
     ]);
-
+//ROTA Tutorial restricoes
+$obRouter->get('/tutorial/restricoes',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getRestricoes($request));
+    }
+    ]);
 
 
 

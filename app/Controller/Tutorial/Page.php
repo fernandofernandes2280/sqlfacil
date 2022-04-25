@@ -89,6 +89,12 @@ class Page{
 	        'link' => URL.'/tutorial/altertable',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'restricoes' =>[
+	        'label' => 'Restrições (Constraints)',
+	        'link' => URL.'/tutorial/restricoes',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

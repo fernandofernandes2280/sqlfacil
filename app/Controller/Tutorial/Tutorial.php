@@ -177,5 +177,22 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) Tutoral Restricoes
+	public static function getRestricoes($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'descricao' => View::render('pages/tutorial/comandosSql/restricoes',[]),
+	            'link' =>'https://dev.mysql.com/doc/search/?d=12&p=1&q=constraints'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'altertable', '');
+	    
+	}
+	
 	
 }
