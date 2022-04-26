@@ -137,5 +137,10 @@ $obRouter->get('/tutorial/truncatetable',[
         return new Response(200, Tutorial\Tutorial::getTruncateTable($request));
     }
     ]);
-
+//ROTA Tutorial dropdatabase
+$obRouter->get('/tutorial/dropdatabase',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getDropDatabase($request));
+    }
+    ]);
 

@@ -137,6 +137,12 @@ class Page{
 	        'link' => URL.'/tutorial/truncatetable',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'dropdatabase' =>[
+	        'label' => 'Drop Database',
+	        'link' => URL.'/tutorial/dropdatabase',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

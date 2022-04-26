@@ -327,4 +327,23 @@ class Tutorial extends Page{
 	    
 	}
 	
+	
+	//retorna o conteudo (view) DropDatabase
+	public static function getDropDatabase($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Remover Banco de Dados (DROP DATABASE)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/dropdatabase',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/drop-database.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'dropdatabase', '');
+	    
+	}
+	
 }
