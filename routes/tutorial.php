@@ -124,6 +124,18 @@ $obRouter->get('/tutorial/delete',[
     }
     ]);
 
+//ROTA Tutorial droptable
+$obRouter->get('/tutorial/droptable',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getDropTable($request));
+    }
+    ]);
 
+//ROTA Tutorial Truncate Table
+$obRouter->get('/tutorial/truncatetable',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getTruncateTable($request));
+    }
+    ]);
 
 

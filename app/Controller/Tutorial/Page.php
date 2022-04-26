@@ -125,6 +125,18 @@ class Page{
 	        'link' => URL.'/tutorial/delete',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'droptable' =>[
+	        'label' => 'Drop Table',
+	        'link' => URL.'/tutorial/droptable',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
+	    ],
+	    'truncatetable' =>[
+	        'label' => 'Truncate Table',
+	        'link' => URL.'/tutorial/truncatetable',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

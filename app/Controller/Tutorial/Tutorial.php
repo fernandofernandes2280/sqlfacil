@@ -290,4 +290,41 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) DropTable
+	public static function getDropTable($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Remover tabelas (DROP TABLE)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/droptable',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/drop-table.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'droptable', '');
+	    
+	}
+	
+	
+	//retorna o conteudo (view) Truncate Table
+	public static function getTruncateTable($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'TRUNCATE TABLE',
+	            'descricao' => View::render('pages/tutorial/comandosSql/truncatetable',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/truncate-table.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'truncatetable', '');
+	    
+	}
+	
 }
