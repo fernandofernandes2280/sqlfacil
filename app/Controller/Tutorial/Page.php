@@ -113,6 +113,12 @@ class Page{
 	        'link' => URL.'/tutorial/orderby',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'update' =>[
+	        'label' => 'Update',
+	        'link' => URL.'/tutorial/update',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

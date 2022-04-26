@@ -254,6 +254,22 @@ class Tutorial extends Page{
 	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'orderby', '');
 	    
 	}
-	
+	//retorna o conteudo (view) Update
+	public static function getUpdate($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Comando UPDATE',
+	            'descricao' => View::render('pages/tutorial/comandosSql/update',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/update.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'update', '');
+	    
+	}
 	
 }

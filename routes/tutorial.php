@@ -111,7 +111,12 @@ $obRouter->get('/tutorial/orderby',[
     }
     ]);
 
-
+//ROTA Tutorial update
+$obRouter->get('/tutorial/update',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getUpdate($request));
+    }
+    ]);
 
 
 
