@@ -101,6 +101,12 @@ class Page{
 	        'link' => URL.'/tutorial/insert',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'select' =>[
+	        'label' => 'Select',
+	        'link' => URL.'/tutorial/select',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

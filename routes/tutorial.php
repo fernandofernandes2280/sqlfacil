@@ -97,5 +97,10 @@ $obRouter->get('/tutorial/insert',[
         return new Response(200, Tutorial\Tutorial::getInsert($request));
     }
     ]);
-
+//ROTA Tutorial select
+$obRouter->get('/tutorial/select',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getSelect($request));
+    }
+    ]);
 

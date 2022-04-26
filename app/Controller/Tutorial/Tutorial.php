@@ -219,4 +219,24 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) getSelect
+	public static function getSelect($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Comando SELECT',
+	            'descricao' => View::render('pages/tutorial/comandosSql/select',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/select.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'select', '');
+	    
+	}
+	
+	
+	
 }
