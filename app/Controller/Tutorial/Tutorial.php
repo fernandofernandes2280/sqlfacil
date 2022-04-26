@@ -272,4 +272,22 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) Delete
+	public static function getDelete($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'DELETANDO/EXCLUINDO registros (DELETE)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/delete',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/delete.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'delete', '');
+	    
+	}
+	
 }

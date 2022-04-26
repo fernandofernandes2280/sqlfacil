@@ -119,6 +119,12 @@ class Page{
 	        'link' => URL.'/tutorial/update',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'delete' =>[
+	        'label' => 'Delete',
+	        'link' => URL.'/tutorial/delete',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

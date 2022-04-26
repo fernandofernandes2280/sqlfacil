@@ -117,7 +117,12 @@ $obRouter->get('/tutorial/update',[
         return new Response(200, Tutorial\Tutorial::getUpdate($request));
     }
     ]);
-
+//ROTA Tutorial delete
+$obRouter->get('/tutorial/delete',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getDelete($request));
+    }
+    ]);
 
 
 
