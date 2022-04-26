@@ -107,6 +107,12 @@ class Page{
 	        'link' => URL.'/tutorial/select',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'orderby' =>[
+	        'label' => 'Order By',
+	        'link' => URL.'/tutorial/orderby',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
 	    ]
 	];
 	

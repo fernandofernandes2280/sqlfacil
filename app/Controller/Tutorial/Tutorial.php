@@ -237,6 +237,23 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) Orderby
+	public static function getOrderby($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'ORDENANDO os registros de uma CONSULTA (ORDER BY)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/orderby',[]),
+	            'link' =>'https://dev.mysql.com/doc/internals/en/optimizer-order-by-clauses.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'orderby', '');
+	    
+	}
 	
 	
 }

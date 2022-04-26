@@ -104,3 +104,16 @@ $obRouter->get('/tutorial/select',[
     }
     ]);
 
+//ROTA Tutorial orderby
+$obRouter->get('/tutorial/orderby',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getOrderby($request));
+    }
+    ]);
+
+
+
+
+
+
+
