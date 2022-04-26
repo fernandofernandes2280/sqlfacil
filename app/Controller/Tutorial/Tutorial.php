@@ -69,8 +69,9 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
-            'descricao' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
-            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-database.html'
+	            'titulo'=>'CREATE DATABASE',
+                'descricao' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
+                'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-database.html'
 	        ]),
 	        'treineSql' => ''
 	    ]);
@@ -86,8 +87,9 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
-            'descricao' => View::render('pages/tutorial/comandosSql/showdatabases',[]),
-            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-databases.html'
+	            'titulo'=> 'SHOW DATABASE',
+                'descricao' => View::render('pages/tutorial/comandosSql/showdatabases',[]),
+                'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-databases.html'
             ]),
 	        'treineSql' => ''
 	    ]);
@@ -102,8 +104,9 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
-            'descricao' => View::render('pages/tutorial/comandosSql/usedatabase',[]),
-            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/database-use.html' 
+	            'titulo'=> 'USE DATABASE',
+                'descricao' => View::render('pages/tutorial/comandosSql/usedatabase',[]),
+                'link' =>'https://dev.mysql.com/doc/refman/5.7/en/database-use.html' 
 	        ]),
 	        'treineSql' => ''
 	    ]);
@@ -118,8 +121,9 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
-            'descricao' => View::render('pages/tutorial/comandosSql/createtable',[]),
-            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-table.html'
+	            'titulo'=> 'CRIANDO tabelas (CREATE TABLE)',
+                'descricao' => View::render('pages/tutorial/comandosSql/createtable',[]),
+                'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-table.html'
 	        ]),
 	        'treineSql' => ''
 	    ]);
@@ -134,6 +138,7 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Comando SHOW TABLES',
 	            'descricao' => View::render('pages/tutorial/comandosSql/showtables',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-tables.html'
 	        ]),
@@ -150,6 +155,7 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Comando SHOW COLUMNS',
 	            'descricao' => View::render('pages/tutorial/comandosSql/showcolumns',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-columns.html'
 	        ]),
@@ -166,6 +172,7 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Comando ALTER TABLE',
 	            'descricao' => View::render('pages/tutorial/comandosSql/altertable',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/alter-table.html'
 	        ]),
@@ -183,6 +190,7 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Restrições (Constraints)',
 	            'descricao' => View::render('pages/tutorial/comandosSql/restricoes',[]),
 	            'link' =>'https://dev.mysql.com/doc/search/?d=12&p=1&q=constraints'
 	        ]),
@@ -190,9 +198,25 @@ class Tutorial extends Page{
 	    ]);
 	    
 	    //Retorna a página completa
-	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'altertable', '');
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'restricoes', '');
 	    
 	}
-	
+	//retorna o conteudo (view) Insert
+	public static function getInsert($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'INSERINDO registros (INSERT INTO)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/insert',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/insert.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'insert', '');
+	    
+	}
 	
 }

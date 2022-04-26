@@ -6,7 +6,7 @@ font-family: 'Open Sans Condensed', sans-serif;
 font-size:14px;
 color:#fff;
 overflow:auto;
-background:#27293D;
+background:#161D31;
 padding-top: 14px;
 padding-bottom: 10px;
 padding-left: 5px;
@@ -25,7 +25,17 @@ border-top-right-radius: 10%;
 </style>
 
 
-<p>{{descricao}}</p>
+<div class="card card-nav-tabs " >
+  <div class="card-header card-header-primary">
+    <strong>{{titulo}}</strong> 
+  </div>
+  <div class="card-body text-light">
+  {{descricao}}
+	</div>
+</div>
+
+
+
 
 <br>
 <a target="about-blank" href="{{link}}">Para mais informações, acesse a documentação do MySQL 5.7</a>

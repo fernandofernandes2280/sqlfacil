@@ -84,7 +84,7 @@ class Page{
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
 	    ],
-	    'Alter Table' =>[
+	    'altertable' =>[
 	        'label' => 'Alter Table',
 	        'link' => URL.'/tutorial/altertable',
 	        'classe' => 'nav-link-subitem',
@@ -93,6 +93,12 @@ class Page{
 	    'restricoes' =>[
 	        'label' => 'Restrições (Constraints)',
 	        'link' => URL.'/tutorial/restricoes',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'play_arrow'
+	    ],
+	    'insert' =>[
+	        'label' => 'Insert',
+	        'link' => URL.'/tutorial/insert',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
 	    ]

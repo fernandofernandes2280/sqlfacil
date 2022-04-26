@@ -91,6 +91,11 @@ $obRouter->get('/tutorial/restricoes',[
         return new Response(200, Tutorial\Tutorial::getRestricoes($request));
     }
     ]);
-
+//ROTA Tutorial Insert
+$obRouter->get('/tutorial/insert',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getInsert($request));
+    }
+    ]);
 
 
