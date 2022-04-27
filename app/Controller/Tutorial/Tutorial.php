@@ -381,4 +381,77 @@ class Tutorial extends Page{
 	    
 	}
 	
+	//retorna o conteudo (view) LEFT JOIN
+	public static function getLeftJoin($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'LEFT JOIN',
+	            'descricao' => View::render('pages/tutorial/comandosSql/leftjoin',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'leftjoin', '');
+	    
+	}
+	
+	//retorna o conteudo (view) RIght JOIN
+	public static function getRightJoin($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'RIGHT JOIN',
+	            'descricao' => View::render('pages/tutorial/comandosSql/rightjoin',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'rightjoin', '');
+	    
+	}
+	
+	//retorna o conteudo (view) Union
+	public static function getUnion($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'UNIÃO de tabelas (UNION/UNION ALL)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/union',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/union.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'union', '');
+	    
+	}
+	
+	//retorna o conteudo (view) Referencias
+	public static function getReferencias($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Referências',
+	            'descricao' => View::render('pages/tutorial/comandosSql/referencias',[]),
+	            'link' =>''
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'referencias', '');
+	    
+	}
+	
+	
 }

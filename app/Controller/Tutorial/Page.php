@@ -161,8 +161,33 @@ class Page{
 	        'link' => URL.'/tutorial/innerjoin',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'arrow_drop_down'
+	    ],
+	    'leftjoin' =>[
+	        'label' => 'Left Join',
+	        'link' => URL.'/tutorial/leftjoin',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'arrow_drop_down'
+	    ],
+	    'rightjoin' =>[
+	        'label' => 'Right Join',
+	        'link' => URL.'/tutorial/rightjoin',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'arrow_drop_down'
+	    ],
+	    'union' =>[
+	        'label' => 'Union',
+	        'link' => URL.'/tutorial/union',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'arrow_drop_down'
+	    ],
+	    'referencias' =>[
+	        'label' => 'Referências',
+	        'link' => URL.'/tutorial/referencias',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'arrow_drop_down'
 	    ]
 	];
+	
 	
 	//Método responsável por renderizar a view do menu Vertical do painel Tutorial
 	private static function getMenuVertical($currentModule){

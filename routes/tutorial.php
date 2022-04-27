@@ -157,4 +157,32 @@ $obRouter->get('/tutorial/innerjoin',[
     }
     ]);
 
+//ROTA Tutorial leftjoin
+$obRouter->get('/tutorial/leftjoin',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getLeftJoin($request));
+    }
+    ]);
+
+//ROTA Tutorial rightjoin
+$obRouter->get('/tutorial/rightjoin',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getRightJoin($request));
+    }
+    ]);
+
+//ROTA Tutorial union
+$obRouter->get('/tutorial/union',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getUnion($request));
+    }
+    ]);
+
+//ROTA Tutorial referencias
+$obRouter->get('/tutorial/referencias',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getReferencias($request));
+    }
+    ]);
+
 
