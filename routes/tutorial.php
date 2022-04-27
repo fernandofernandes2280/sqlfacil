@@ -144,3 +144,17 @@ $obRouter->get('/tutorial/dropdatabase',[
     }
     ]);
 
+//ROTA Tutorial join
+$obRouter->get('/tutorial/join',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getJoin($request));
+    }
+    ]);
+//ROTA Tutorial innerjoin
+$obRouter->get('/tutorial/innerjoin',[
+    function ($request){
+        return new Response(200, Tutorial\Tutorial::getInnerJoin($request));
+    }
+    ]);
+
+

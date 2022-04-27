@@ -345,5 +345,40 @@ class Tutorial extends Page{
 	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'dropdatabase', '');
 	    
 	}
+	//retorna o conteudo (view) Join
+	public static function getJoin($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'Juntando Tabelas (JOIN)',
+	            'descricao' => View::render('pages/tutorial/comandosSql/join',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'join', '');
+	    
+	}
+	
+	//retorna o conteudo (view) InnerJoin
+	public static function getInnerJoin($request){
+	    //View da
+	    $content = View::render('pages/tutorial/index',[
+	        
+	        'comandosSql' => View::render('pages/tutorial/comandosSql/index',[
+	            'titulo'=> 'INNER JOIN',
+	            'descricao' => View::render('pages/tutorial/comandosSql/innerjoin',[]),
+	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
+	        ]),
+	        'treineSql' => ''
+	    ]);
+	    
+	    //Retorna a página completa
+	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'innerjoin', '');
+	    
+	}
 	
 }

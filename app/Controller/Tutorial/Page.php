@@ -45,7 +45,7 @@ class Page{
 	    'comandosbasicos' =>[
 	        'label' => 'Comandos Básicos',
 	        'link' => '',
-	        'classe' => '',
+	        'classe' => 'disabled',
 	        'icon' => 'arrow_drop_down'
 	    ],
 	    'createdatabase' =>[
@@ -143,6 +143,24 @@ class Page{
 	        'link' => URL.'/tutorial/dropdatabase',
 	        'classe' => 'nav-link-subitem',
 	        'icon' => 'play_arrow'
+	    ],
+	    'comandosavancados' =>[
+	        'label' => 'Comandos Avançados',
+	        'link' => '',
+	        'classe' => 'disabled',
+	        'icon' => 'arrow_drop_down'
+	    ],
+	    'join' =>[
+	        'label' => 'Join',
+	        'link' => URL.'/tutorial/join',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'arrow_drop_down'
+	    ],
+	    'innerjoin' =>[
+	        'label' => 'Inner Join',
+	        'link' => URL.'/tutorial/innerjoin',
+	        'classe' => 'nav-link-subitem',
+	        'icon' => 'arrow_drop_down'
 	    ]
 	];
 	
