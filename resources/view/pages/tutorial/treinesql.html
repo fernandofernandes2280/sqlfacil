@@ -1,0 +1,49 @@
+ 
+ <div class="card card-nav-tabs " >
+  <div class="card-header card-header-success">
+    <strong>Treine Aqui os Comandos SQL:</strong> 
+  </div>
+  <div class="card-body text-light">
+     <form id="formresposta" name="formresposta" >
+       <table class="table" style="font-weight: bold;">
+           
+           <tr>
+               <td>
+                    Banco: <input type="text" name="banco" id="banco" class="form-control" readonly />
+               </td>
+           </tr>
+           <tr>
+               <td colspan="2">
+                   <textarea class="form-control" rows="5" name="resposta" id="resposta"  style="font-size: 100%" OnPaste="return naoColarTexto();" placeholder="Digite aqui os comandos SQL"></textarea>
+               </td>
+           </tr>
+           <tr>
+               <td>
+                   <input type="hidden" name="oculto" value="efetuar"/>
+                   <input name="executar" type="button" id="executar" value="Executar <Enter>" class="btn btn-primary btn-sm" />
+                   <input name="limpar" id="limpar" type="button" value="Limpar <Esc>" class="btn btn-warning btn-sm" onclick="javascript:limpaCampos();"/>
+                    
+                    <!-- teste com ajax -->
+<section class="users" hiddens>
+    
+    <article class="users_user">
+        <h3>TESTE DE AJAX</h3>
+        <a class="remove" href="#" data-action="{{URL}}/tutorial/treinesql" data-id="3">Deletar</a>
+        </article>
+    
+</section>
+                    
+               </td>
+           </tr>
+       </table>
+       <div class="row" style="margin-left: 5px;">
+           <label><font font size=3>Resultado:</font></label>
+           <div class="col-xs-12 col-md-12 col-lg-12 form-control" style="overflow: auto; height: 40%; width: 95%"  id="resultado" name="resultado" >
+           </div>
+       </div>
+   </form>
+	</div>
+</div>
+ 
+
+ 

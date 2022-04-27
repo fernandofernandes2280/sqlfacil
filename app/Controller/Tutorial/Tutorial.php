@@ -27,7 +27,7 @@ class Tutorial extends Page{
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/antesdecomecar',[]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[]),
 	    ]);
 	    
 	    //Retorna a página completa

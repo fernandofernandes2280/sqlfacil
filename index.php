@@ -9,6 +9,10 @@ $obRouter = new Router(URL);
 
 
 //Inclui as rotas de Tutorial
+include __DIR__.'/routes/ajax.php';
+
+
+//Inclui as rotas de Tutorial
 include __DIR__.'/routes/tutorial.php';
 
 //Inclui as rotas de páginas
