@@ -9,9 +9,9 @@ $(document).ready(function() {
 		var data = $(this).data();
 		
 		
-		$.post(data.action,data,function(id){
+		$.post(data.action,data,function(name){
 			
-			alert(id);
+			alert(name);
 		
 			
 			
@@ -19,13 +19,6 @@ $(document).ready(function() {
 			console.log("erro");
 		});
 	});
-	
-	
-
-
-
-
-	
 	
 	
 	})

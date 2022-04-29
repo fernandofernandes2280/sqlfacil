@@ -73,7 +73,7 @@ class Tutorial extends Page{
                 'descricao' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
                 'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-database.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[]),
 	    ]);
 	    
 	    //Retorna a página completa

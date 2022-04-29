@@ -10,7 +10,8 @@ class Ajax extends Page {
 	{
 		//$callback["data"]=$data;
 		$postVars = $request->getPostVars();
-		$id2 = ($postVars["id"]);
+		
+		$id2 = ($postVars["name"]);
 		//echo json_encode($id);
 		echo ($id2);
 	}

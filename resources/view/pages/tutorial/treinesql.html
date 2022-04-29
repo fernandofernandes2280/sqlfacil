@@ -9,7 +9,7 @@
            
            <tr>
                <td>
-                    Banco: <input type="text" name="banco" id="banco" class="form-control" readonly />
+                    Banco: <input type="text" name="banco" id="banco" class="form-control"  />
                </td>
            </tr>
            <tr>
@@ -22,28 +22,113 @@
                    <input type="hidden" name="oculto" value="efetuar"/>
                    <input name="executar" type="button" id="executar" value="Executar <Enter>" class="btn btn-primary btn-sm" />
                    <input name="limpar" id="limpar" type="button" value="Limpar <Esc>" class="btn btn-warning btn-sm" onclick="javascript:limpaCampos();"/>
-                    
-                    <!-- teste com ajax -->
-<section class="users" hiddens>
-    
-    <article class="users_user">
-        <h3>TESTE DE AJAX</h3>
-        <a class="remove" href="#" data-action="{{URL}}/tutorial/treinesql" data-id="3">Deletar</a>
-        </article>
-    
-</section>
-                    
                </td>
            </tr>
        </table>
        <div class="row" style="margin-left: 5px;">
            <label><font font size=3>Resultado:</font></label>
-           <div class="col-xs-12 col-md-12 col-lg-12 form-control" style="overflow: auto; height: 40%; width: 95%"  id="resultado" name="resultado" >
+           <div class="" style="overflow: auto; height: 40%; width: 95%"  id="resultado" name="resultado" >
            </div>
        </div>
    </form>
 	</div>
 </div>
- 
+ <script>
+
+    //Excluir Turma
+      $("#executar").click(function (){ 
+       var form = new FormData($("#formresposta")[0]);
+       $.ajax({
+           url: '{{URL}}/app/Controller/Ajax/TreineSql.php',
+           type: 'post',
+           dataType: 'json',
+           cache: false,
+           processData: false,
+           contentType: false,
+           data: form,
+           timeout: 8000,
+           success: function(resultado){
+           
+              //mostra resultado no textArea resultado
+               $("#resultado").html(resultado[0]);
+               
+               //recebe o valor do txtArea para mudar a cor para(verde ou vermelho)
+              var mensagem = document.getElementById("resultado").value;
+              var textArea = document.getElementById("resultado");
+              
+               // faz a comparacao aqui
+               if ((resultado[0] == "Comando executado com Sucesso!") || (resultado[0].substr(1, [5])=="table")){
+                   textArea.style.color = "green";
+                   textArea.style.background = "#98FB98";
+             }else{
+                       textArea.style.color = "red";
+                       textArea.style.background = "#e4b9b9";
+                    }
+           }
+       });
+    });
+
+
+//funcao pra verificar resposta
+$(document).ready(function (){
+    $("#executar1").click(function (){ 
+        //codigo ajax para buscar a resposta do comando
+       var form = new FormData($("#formresposta")[0]);
+       $.ajax({
+           url: '{{URL}}/app/Controller/Ajax/treineSql.php',
+           type: 'post',
+           dataType: 'json',
+           cache: false,
+           processData: false,
+           contentType: false,
+           data: form,
+
+           timeout: 8000,
+           success: function(resultado){ alert('ok');
+                //mostra resultado no txteArea resultado
+               $("#resultado").html(resultado[0]);
+               //recebe o valor do txtArea para mudar a cor para(verde ou vermelho)
+              var mensagem = document.getElementById("resultado").value;
+              var textArea = document.getElementById("resultado");
+              
+              
+              // faz a comparacao aqui
+               if ((resultado[0] == "Comando executado com Sucesso!") || (resultado[0].substr(1, [5])=="table")){
+                   textArea.style.color = "green";
+                   textArea.style.background = "#98FB98";
+
+                   //compara resultado[3] do treinasql.php com comando 'USE'
+                   if (resultado[3] == 'USE'){//busca no select pelo banco selecionado
+                        var nomeBanco = resultado[1];//recebe o nome do banco selecionado
+                        document.getElementById("banco").value = nomeBanco;
+                       //cria a sessao com o nome do banco atual
+                        sessionStorage.setItem('nomeBancoTutorial',nomeBanco);
+
+                    }
+
+                    if (resultado[3] == 'SELECT'){
+                         //$("#resultado").html(resultado[0]+'<br>'+resultado[2]);
+                         $("#resultado").html(resultado[2]);
+                    }
+                    if (resultado[3] == 'SHOWTABLES'){
+                        // $("#resultado").html(resultado[0]+'<br>'+resultado[2]);
+                         $("#resultado").html(resultado[2]);
+                    }
+                    if (resultado[3] == 'DROPDATABASE'){
+                        sessionStorage.setItem('nomeBancoTutorial','');
+                        document.getElementById("banco").value = '';
+                    }
+               }else{
+                       textArea.style.color = "red";
+                       textArea.style.background = "#e4b9b9";
+                    }
+           }
+       });
+
+    });
+});
+
+
+ </script>
 
  
