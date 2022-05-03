@@ -2,6 +2,13 @@
 
 namespace App\Controller\Ajax;
 use PDO;
+
+//inicia a sessão caso não esteja ativa
+    if(session_status() != PHP_SESSION_ACTIVE ){
+        session_start();
+    }
+
+
 $dbuser = "root";
 $dbsenha = "fl4m3ng0";
 //$dbsenha = "3duc4unifap";
@@ -26,28 +33,15 @@ try{
 
 //verifica se alguma resposta foi digitada
 if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
-    $sql =strtolower($_POST['resposta']);
     
-    $comandoInformado = explode(" ", $sql.' ');
+    //retira excessos de espaços em branco 
+    $sql = trim(preg_replace('/\s\s+/',' ', strtolower($_POST['resposta'])));
+    
     $msgSucesso = "Comando executado com Sucesso!";
     $msgErro = 'Comando SQL inválido para a Questão ou Existe erro de Sintaxe!';
     
-    $tira_espacos = strtolower(str_replace(' ','',$sql));
-    $tiraEspaco = strtolower(str_replace(' ','', $sql));
-   
-    $palavra = explode(' ', $sql.' ');
-    
-    
-    //pega apenas o nome do banco de dados que será criado
- //   $nomeBanco =trim(str_replace('createdatabase',' ',$tiraEspaco));
-    
-    //pega as 14 primeiras letras do comando digitado - CREATEDATABASE
-  //  $createDatabase = strtolower(substr($tira_espacos, 0, 14));
-    //pega as 13 primeiras letras do comando digitado - SHOWDATABASES
-    $showDatabases = strtolower(substr($tira_espacos, 0, 13));
-    //pega as 3 primeiras letras do comando digitado - USE
-    $use = strtolower(substr($tira_espacos, 0, 3));
-    
+    //separa as palavras em array
+    $palavra = explode(' ', $sql);
     
     //sempre haverá um usuário logado
     $id = 5;
@@ -55,16 +49,15 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
      
    
     //Todos os comandos sql com pelo menos duas palavras
-  //  if(count($palavra) >= 2){
+    if(count($palavra) > 1){
         //Comando create database
         if($palavra[0].$palavra[1] == 'createdatabase'){
-            
             if(count($palavra) == 2){
                 $sql = $palavra[0].' '.$palavra[1];
-            }else{
-                $nomeBanco = $palavra[2];
-                $sql = $palavra[0].' '.$palavra[1].' '.$id_usuario.$palavra[2];
-            }
+            }else if (count($palavra) == 3){
+                $nomeBanco = $id_usuario.$palavra[2];
+                $sql = $palavra[0].' '.$palavra[1].' '.$nomeBanco;
+            }else $sql = $sql;
             
                 //executa a instrução
                 if ($pdo_Aux ->query($sql)){
@@ -74,9 +67,12 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                 }else{
                     //mensagem de erro sem o id do usuário
                      $resultado[0] = str_replace($id_usuario,'',(($pdo_Aux -> errorInfo()[2])));
+                  //   $resultado[0] = $sql;
                 }
-         //Comando show databases       
-        }else if($palavra[0].$palavra[1] == 'showdatabases'){
+        }else
+        
+        //Comando show databases
+        if($palavra[0].$palavra[1] == 'showdatabases'){
             
             if($showColumnsTables = $pdo_Aux -> query($sql)){
                 $row = $showColumnsTables -> fetchAll(PDO::FETCH_ASSOC);
@@ -125,32 +121,45 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
         }// Fim show databases
             else if($palavra[0]== 'use'){
                 //verifica quantas palavras foram usadas junto com o comando use
-                if(count($palavra) == 1){
-                    $sql = $palavra[0];
-                }else if(count($palavra) == 3){
-                    $nomeBanco = $palavra[1];
-                    
-                   //verifica se depois de use existe espaço
-                    if(empty($palavra[1])){
-                        $sql = $sql;
+              
+                   if(count($palavra) == 2){
+                       $nomeBanco = $id_usuario.$palavra[1];
+                       $sql = $palavra[0].' '.$nomeBanco;
+                        
                     }else{
-                    $sql = $palavra[0].' '.$id_usuario.$nomeBanco;
+                        $sql = $sql;
                     }
-                    
-                } else $sql = $sql;
-                
+
                 if ($pdo_Aux ->query($sql)){
                     $resultado[0] = $msgSucesso;
-                    $resultado[1] = $nomeBanco;
+                    //armazena o nome do banco para exibir na tela 
+                    $resultado[1] = str_replace($id_usuario,'',($nomeBanco));
                     $resultado[3] = 'use';
+                  
+                    //Define a sessao do banco em uso
+                    $_SESSION['nomeBanco'] = $resultado[1]; 
+                    
                 }else{
                     //tira o id do usuario da mensagem
                     $resultado[0] = str_replace($id_usuario,'',(($pdo_Aux -> errorInfo()[2])));
-                
                   
                 }
+            }else if($pdo_Aux ->query($sql)){
+                $resultado[0] = $msgSucesso;
+                
+            }else{
+                //mensagem de erro sem o id do usuário
+                $resultado[0] = str_replace($id_usuario,'',(($pdo_Aux -> errorInfo()[2])));
+                
+            }
             
-            } else if($pdo_Aux ->query($sql)){
+            
+            
+            
+            
+            
+            //apenas 1 palavra na resposta
+            }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
                 
                 }else{
@@ -166,7 +175,7 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
      //Todos os comandos sql com pelo menos uma palavras
     
        
-//$resultado[0] = count($palavra);
+//$resultado[0] = $sql;
 
 echo json_encode($resultado);
     

@@ -3,10 +3,12 @@
 namespace App\Controller\Tutorial;
 
 use \App\Utils\View;
-
+use \App\Utils\Funcoes;
 
 class Tutorial extends Page{
 	
+    
+    
 	//retorna o conteudo (view) da nossa página de sobre
 	public static function getTutorial($request){
 		//View da 
@@ -65,6 +67,10 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Tutoral Create Database
 	public static function getCreateDatabase($request){
+
+	    //Inicia a sessão
+	    Funcoes::init();
+	    
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -73,7 +79,9 @@ class Tutorial extends Page{
                 'descricao' => View::render('pages/tutorial/comandosSql/createdatabase',[]),
                 'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-database.html'
 	        ]),
-	        'treineSql' => View::render('pages/tutorial/treinesql',[]),
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -83,6 +91,9 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Tutoral ShOW Database
 	public static function getShowDatabases($request){
+	    //Inicia a sessão
+	    Funcoes::init();
+	    
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -91,7 +102,9 @@ class Tutorial extends Page{
                 'descricao' => View::render('pages/tutorial/comandosSql/showdatabases',[]),
                 'link' =>'https://dev.mysql.com/doc/refman/5.7/en/show-databases.html'
             ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -100,6 +113,9 @@ class Tutorial extends Page{
 	}
 	//retorna o conteudo (view) Tutoral USE DATABASE
 	public static function getUseDatabase($request){
+	    //Inicia a sessão
+	    Funcoes::init();
+	    
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -108,7 +124,9 @@ class Tutorial extends Page{
                 'descricao' => View::render('pages/tutorial/comandosSql/usedatabase',[]),
                 'link' =>'https://dev.mysql.com/doc/refman/5.7/en/database-use.html' 
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
