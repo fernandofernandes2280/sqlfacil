@@ -46,7 +46,7 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
     
     //sempre haverá um usuário logado
     $id = 5;
-    $_SESSION['id_usuario'] = $id."_";
+    $_SESSION['id_usuario'] = $id;
      
    
     //Todos os comandos sql com pelo menos duas palavras
@@ -93,10 +93,9 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                             $out .= array2Html($value, false);
                             $out .= '</tr>';
                         }else{
-                            //   if(isset($_SESSION['id_usuario_login'])){$id_usuario = $_SESSION['id_usuario_login'];}
+
                             // exibe apenas os bancos criados pelo usuario logado
-                            $id_usuario = 5;
-                            if(strstr($value, '_', true) == $id_usuario){
+                            if(strstr($value, $_SESSION['nomeBanco'], true) == $_SESSION['id_usuario']){
                                 
                                 $value = str_replace($_SESSION['id_usuario'],'',$value);
                                 $out .= "<td >$value</td>";
