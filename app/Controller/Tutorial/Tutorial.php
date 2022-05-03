@@ -135,6 +135,9 @@ class Tutorial extends Page{
 	}
 	//retorna o conteudo (view) Tutoral CREATE TABLE
 	public static function getCreateTable($request){
+	    //Inicia a sessão
+	    Funcoes::init();
+	    
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -143,7 +146,9 @@ class Tutorial extends Page{
                 'descricao' => View::render('pages/tutorial/comandosSql/createtable',[]),
                 'link' =>'https://dev.mysql.com/doc/refman/5.7/en/create-table.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa

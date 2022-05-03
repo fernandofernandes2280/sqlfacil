@@ -8,6 +8,7 @@ use PDO;
         session_start();
     }
 
+//unset($_SESSION['nomeBanco']);
 
 $dbuser = "root";
 $dbsenha = "fl4m3ng0";
@@ -144,6 +145,28 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                     $resultado[0] = str_replace($id_usuario,'',(($pdo_Aux -> errorInfo()[2])));
                   
                 }
+            }else
+            //Comando Create Table
+            if($palavra[0].$palavra[1] == 'createtable'){
+                
+                //como o banco em uso
+                if(isset($_SESSION['nomeBanco']))
+                $pdo_Aux->query('use '.$id_usuario.$_SESSION['nomeBanco']);
+                
+           
+                if ($pdo_Aux ->query($sql)){
+                    $resultado[0] = $msgSucesso;//}
+                }else{
+                    //tira o id do usuario da mensagem
+                    $resultado[0] = str_replace($id_usuario,'',(($pdo_Aux -> errorInfo()[2])));
+                }
+                
+                
+                
+                
+                
+                
+                
             }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
                 
