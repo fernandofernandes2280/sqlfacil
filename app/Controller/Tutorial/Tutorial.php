@@ -199,6 +199,8 @@ class Tutorial extends Page{
 	}
 	//retorna o conteudo (view) Tutoral Alter Table
 	public static function getAlterTable($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -207,7 +209,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/altertable',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/alter-table.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa

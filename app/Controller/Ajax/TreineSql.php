@@ -249,14 +249,32 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                 }
                 
                 else{
-                    $resultado[0] = $pdo_Aux -> errorInfo()[2];
-                    //tira o id do usuario da mensagem
-                    $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($resultado[0])));
+                    //mensagem de erro sem o id do usuário
+                    $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                 }
                 
                 
+            
+              //Comando Alter Table
+            }else if($palavra[0].$palavra[1] == 'altertable'){
+        
+                //como o banco em uso
+                if(isset($_SESSION['nomeBanco']))
+                    $pdo_Aux->query('use '.$_SESSION['id_usuario'].$_SESSION['nomeBanco']);
                 
-            }else if($pdo_Aux ->query($sql)){
+                if ($pdo_Aux ->query($sql)){
+                    $resultado[0] = $msgSucesso;
+                }else{
+                    //mensagem de erro sem o id do usuário
+                    $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
+                }
+                
+                
+        
+        
+        
+        
+    }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
                 
             }else{
