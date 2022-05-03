@@ -159,6 +159,8 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                     //tira o id do usuario da mensagem
                     $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                 }
+                
+                //Comando Show Tables
             }else if($palavra[0].$palavra[1] == 'showtables'){
                 
                 //como o banco em uso
@@ -205,6 +207,52 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                     $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                 }
                 
+                
+                
+             //Comando Show Columns   
+            }else if($palavra[0].$palavra[1].$palavra[2] == 'showcolumnsfrom'){
+             
+                //como o banco em uso
+                if(isset($_SESSION['nomeBanco']))
+                    $pdo_Aux->query('use '.$_SESSION['id_usuario'].$_SESSION['nomeBanco']);
+                
+                if($showColumnsTables = $pdo_Aux -> query($sql)){
+                    $row = $showColumnsTables -> fetchAll(PDO::FETCH_ASSOC);
+                    function array2Html($array, $table = true){
+                        $out = '';
+                        // $tableHeader='';
+                        foreach ($array as $key => $value) {
+                            if (is_array($value)) {
+                                if (!isset($tableHeader)) {
+                                    $tableHeader =
+                                    '<th class="active">' .
+                                    implode('</th><th class="active">', array_keys($value)) .
+                                    '</th>';
+                                }
+                                array_keys($value);
+                                $out .= '<tr>';
+                                $out .= array2Html($value, false);
+                                $out .= '</tr>';
+                            }else{
+                                $out .= "<td >$value</td>";
+                            }
+                        }
+                        
+                        if ($table) {
+                            return '<table class="table table-bordered table-condensed">' . $tableHeader . $out . '</table>';
+                        }else{
+                            return $out;
+                        }
+                    }
+                    //envia o resultado do comando
+                    $resultado[0] = html_entity_decode(array2Html($row));
+                }
+                
+                else{
+                    $resultado[0] = $pdo_Aux -> errorInfo()[2];
+                    //tira o id do usuario da mensagem
+                    $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($resultado[0])));
+                }
                 
                 
                 

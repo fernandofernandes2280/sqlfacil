@@ -50,6 +50,11 @@ $(document).ready(function() {
                if ((resultado[0] == "Comando executado com Sucesso!") || (resultado[0].substr(1, [5])=="table")){
                    textArea.style.color = "green";
                    textArea.style.background = "#98FB98";
+
+			 //Caso o banco não possua tabelas, exibe essa mensagem	
+			  if(resultado[3] == "showtables") 	$("#resultado").html(resultado[0]+'<br>'+resultado[2]);
+
+
              }else{
                        textArea.style.color = "red";
                        textArea.style.background = "#e4b9b9";
