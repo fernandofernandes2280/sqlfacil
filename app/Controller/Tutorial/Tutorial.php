@@ -220,7 +220,8 @@ class Tutorial extends Page{
 	}
 	
 	//retorna o conteudo (view) Tutoral Restricoes
-	public static function getRestricoes($request){
+	public static function getRestricoes($request){//Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -229,7 +230,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/restricoes',[]),
 	            'link' =>'https://dev.mysql.com/doc/search/?d=12&p=1&q=constraints'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
