@@ -261,8 +261,10 @@ class Tutorial extends Page{
 	    
 	}
 	
-	//retorna o conteudo (view) getSelect
+	//retorna o conteudo (view) Select
 	public static function getSelect($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -271,7 +273,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/select',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/select.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
