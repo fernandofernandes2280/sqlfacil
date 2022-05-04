@@ -50,7 +50,7 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
      
    
     //Todos os comandos sql com pelo menos duas palavras
-    if(count($palavra) > 1){
+    if(count($palavra) >1){
         //Comando create database
         if($palavra[0].$palavra[1] == 'createdatabase'){
             if(count($palavra) == 2){
@@ -210,7 +210,7 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                 
                 
              //Comando Show Columns   
-            }else if($palavra[0].$palavra[1].$palavra[2] == 'showcolumnsfrom'){
+            }else if($palavra[0].$palavra[1] == 'showcolumns'){
              
                 //como o banco em uso
                 if(isset($_SESSION['nomeBanco']))
@@ -321,8 +321,14 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                                 return $out;
                             }
                         }
-                        //envia o resultado do comando
-                        $resultado[0] = html_entity_decode(array2Html($row));
+                        
+                        if (empty($row)){
+                            $resultado[0] = $msgSucesso;
+                            $resultado[3] ="showtables";
+                            $resultado[2] ="Comando não retornou nenhum registro.";
+                        }else{//envia o resultado do comando
+                            $resultado[0] = html_entity_decode(array2Html($row));}
+                        
                     }
                     
                     else{
@@ -370,6 +376,19 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                         //mensagem de erro sem o id do usuário
                         $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                     }
+                    //Comando Truncate 
+            }else if($palavra[0] == 'truncate'){
+                
+                //como o banco em uso
+                if(isset($_SESSION['nomeBanco']))
+                    $pdo_Aux->query('use '.$_SESSION['id_usuario'].$_SESSION['nomeBanco']);
+                    
+                    if ($pdo_Aux ->query($sql)){
+                        $resultado[0] = $msgSucesso;
+                    }else{
+                        //mensagem de erro sem o id do usuário
+                        $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
+                    }
         
     }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
@@ -391,8 +410,8 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                 
                 }else{
                     //mensagem de erro sem o id do usuário
-                    $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
-                  
+                   // $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
+                  $resultado[0] = "aqui";
                 }
         
             
