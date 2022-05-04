@@ -44,13 +44,14 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
     //separa as palavras em array
     $palavra = explode(' ', $sql);
     
-    //sempre haverá um usuário logado
-    $id = 5;
-    $_SESSION['id_usuario'] = $id;
+   
      
    
     //Todos os comandos sql com pelo menos duas palavras
     if(count($palavra) >1){
+        //sempre haverá um usuário logado
+        $id = 5;
+        $_SESSION['id_usuario'] = $id;
         //Comando create database
         if($palavra[0].$palavra[1] == 'createdatabase'){
             if(count($palavra) == 2){
@@ -95,7 +96,7 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                         }else{
 
                             // exibe apenas os bancos criados pelo usuario logado
-                            if(strstr($value, $_SESSION['nomeBanco'], true) == $_SESSION['id_usuario']){
+                            if($value[0] == $_SESSION['id_usuario']){
                                 
                                 $value = str_replace($_SESSION['id_usuario'],'',$value);
                                 $out .= "<td >$value</td>";
@@ -321,7 +322,7 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                                 return $out;
                             }
                         }
-                        
+                        //caso nao existam tabelas 
                         if (empty($row)){
                             $resultado[0] = $msgSucesso;
                             $resultado[3] ="showtables";
@@ -389,6 +390,25 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                         //mensagem de erro sem o id do usuário
                         $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                     }
+                    
+                    //Comando Drop Database
+            }else if($palavra[0].$palavra[1] == 'dropdatabase'){
+                    $sql = 'drop database '.$_SESSION['id_usuario'].$palavra[2];
+                    if ($pdo_Aux ->query($sql)){
+                        $resultado[0] = $msgSucesso;
+                        
+                        if(isset($_SESSION['nomeBanco'])){
+                            
+                            if($_SESSION['id_usuario'].$palavra[2] == $_SESSION['id_usuario'].$_SESSION['nomeBanco']) {
+                                unset($_SESSION['nomeBanco']);
+                                $resultado[3] = 'dropBancoAtual';}
+                        }
+                        
+                    }else{
+                        //mensagem de erro sem o id do usuário
+                        $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
+                       
+                    }
         
     }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
@@ -400,51 +420,15 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
             }
             
             
-            
-            
-            
-            
             //apenas 1 palavra na resposta
             }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
-                
                 }else{
                     //mensagem de erro sem o id do usuário
-                   // $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
-                  $resultado[0] = "aqui";
+                   $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                 }
-        
-            
-            
-            
-            
-     //Todos os comandos sql com pelo menos uma palavras
-    
-       
-//$resultado[0] = $sql;
 
-echo json_encode($resultado);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    echo json_encode($resultado);
     
 }else{//se nenhuma resposta tiver sido digitada
     $resultado[0]='Nenhum comando foi digitado!';

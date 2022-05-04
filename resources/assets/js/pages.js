@@ -54,6 +54,9 @@ $(document).ready(function() {
 			 //Caso o banco não possua tabelas, exibe essa mensagem	
 			  if(resultado[3] == "showtables") 	$("#resultado").html(resultado[0]+'<br>'+resultado[2]);
 
+			//limpa o nome do banco atual caso este tenha sido excluído
+               if(resultado[3] == "dropBancoAtual")
+               $("#banco").text("");	
 
              }else{
                        textArea.style.color = "red";
