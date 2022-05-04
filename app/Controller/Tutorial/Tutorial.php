@@ -285,6 +285,8 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Orderby
 	public static function getOrderby($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -293,7 +295,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/orderby',[]),
 	            'link' =>'https://dev.mysql.com/doc/internals/en/optimizer-order-by-clauses.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
