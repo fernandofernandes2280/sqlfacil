@@ -357,6 +357,19 @@ if (isset($_POST['resposta']) && ($_POST['resposta']!='')){
                         //mensagem de erro sem o id do usuário
                         $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
                     }
+                    //Comando Drop Table
+            }else if($palavra[0].$palavra[1] == 'droptable'){
+                
+                //como o banco em uso
+                if(isset($_SESSION['nomeBanco']))
+                    $pdo_Aux->query('use '.$_SESSION['id_usuario'].$_SESSION['nomeBanco']);
+                    
+                    if ($pdo_Aux ->query($sql)){
+                        $resultado[0] = $msgSucesso;
+                    }else{
+                        //mensagem de erro sem o id do usuário
+                        $resultado[0] = str_replace($_SESSION['id_usuario'],'',(($pdo_Aux -> errorInfo()[2])));
+                    }
         
     }else if($pdo_Aux ->query($sql)){
                 $resultado[0] = $msgSucesso;
