@@ -239,8 +239,10 @@ class Tutorial extends Page{
 	    return parent:: getPanel(  'SqlFácil > Tutorial', $content,'restricoes', '');
 	    
 	}
-	//retorna o conteudo (view) Insert
+	//retorna o conteudo (view) Insert Into
 	public static function getInsert($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -249,7 +251,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/insert',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/insert.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
