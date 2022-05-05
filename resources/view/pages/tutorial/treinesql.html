@@ -4,7 +4,7 @@
     <strong>Treine Aqui os Comandos SQL:</strong> 
   </div>
   <div class="card-body text-light">
-     <form id="formresposta" name="formresposta" >
+     <form id="formresposta" name="formresposta" onsubmit="return false">
        <table class="table" style="font-weight: bold;">
            
            <tr>
@@ -21,8 +21,11 @@
            <tr>
                <td>
                    <input type="hidden" name="oculto" value="efetuar"/>
-                   <input name="executar" type="button" id="executar" value="Executar <Enter>" class="btn btn-primary btn-sm" />
-                   <input name="limpar" id="limpar" type="button" value="Limpar <Esc>" class="btn btn-warning btn-sm" onclick="javascript:limpaCampos();"/>
+                  
+                   <button rel="tooltip" title="executar SQL (F2)" class="btn btn-warning btn-sm" name="executar" id="executar"><i class="material-icons" style="font-size: 30px;">bolt</i></button>
+                   <button rel="tooltip" title="limpar (Esc)"class="btn btn-danger btn-sm" name="limpar" id="limpar"><i class="material-icons" style="font-size: 30px;">close</i></button>
+                   
+                  
                </td>
            </tr>
        </table>
@@ -34,72 +37,6 @@
    </form>
 	</div>
 </div>
- <script>
-
-
-
-
-
-//funcao pra verificar resposta
-$(document).ready(function (){
-    $("#executar1").click(function (){ 
-        //codigo ajax para buscar a resposta do comando
-       var form = new FormData($("#formresposta")[0]);
-       $.ajax({
-           url: '{{URL}}/app/Controller/Ajax/treineSql.php',
-           type: 'post',
-           dataType: 'json',
-           cache: false,
-           processData: false,
-           contentType: false,
-           data: form,
-
-           timeout: 8000,
-           success: function(resultado){ alert('ok');
-                //mostra resultado no txteArea resultado
-               $("#resultado").html(resultado[0]);
-               //recebe o valor do txtArea para mudar a cor para(verde ou vermelho)
-              var mensagem = document.getElementById("resultado").value;
-              var textArea = document.getElementById("resultado");
-              
-              
-              // faz a comparacao aqui
-               if ((resultado[0] == "Comando executado com Sucesso!") || (resultado[0].substr(1, [5])=="table")){
-                   textArea.style.color = "green";
-                   textArea.style.background = "#98FB98";
-
-                   //compara resultado[3] do treinasql.php com comando 'USE'
-                   if (resultado[3] == 'USE'){//busca no select pelo banco selecionado
-                        var nomeBanco = resultado[1];//recebe o nome do banco selecionado
-                        document.getElementById("banco").value = nomeBanco;
-                       //cria a sessao com o nome do banco atual
-                        sessionStorage.setItem('nomeBancoTutorial',nomeBanco);
-
-                    }
-
-                    if (resultado[3] == 'SELECT'){
-                         //$("#resultado").html(resultado[0]+'<br>'+resultado[2]);
-                         $("#resultado").html(resultado[2]);
-                    }
-                    if (resultado[3] == 'SHOWTABLES'){
-                        // $("#resultado").html(resultado[0]+'<br>'+resultado[2]);
-                         $("#resultado").html(resultado[2]);
-                    }
-                    if (resultado[3] == 'DROPDATABASE'){
-                        sessionStorage.setItem('nomeBancoTutorial','');
-                        document.getElementById("banco").value = '';
-                    }
-               }else{
-                       textArea.style.color = "red";
-                       textArea.style.background = "#e4b9b9";
-                    }
-           }
-       });
-
-    });
-});
-
-
- </script>
+ 
 
  

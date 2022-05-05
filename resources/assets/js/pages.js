@@ -66,8 +66,33 @@ $(document).ready(function() {
        });
     });
 	
+	//Limpa o text area resposta	
+	$("#limpar").click(function (){
+		 $('#resposta').val('');
+	}); 
 	
+
+    //aciona o botão de limpar com a tecla ESC
+	 document.onkeyup=function(e){
+        if(e.which == 27){
+            $('#limpar').click();
+            return false;
+        }
+    }
 	
+	 //aciona o botão de Executar
+	 document.onkeyup=function(e){
+        if(e.which == 113){
+            $('#executar').click();
+            return false;
+        }
+    }
+
+	$(document).ready(function(){
+  $("executar1").click(function(event){
+    event.preventDefault();
+  });
+});
 	
 	})
 

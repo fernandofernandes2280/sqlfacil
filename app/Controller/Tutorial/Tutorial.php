@@ -417,6 +417,8 @@ class Tutorial extends Page{
 	}
 	//retorna o conteudo (view) Join
 	public static function getJoin($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -425,7 +427,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/join',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -435,6 +439,8 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) InnerJoin
 	public static function getInnerJoin($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -443,7 +449,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/innerjoin',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -453,6 +461,8 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) LEFT JOIN
 	public static function getLeftJoin($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -461,7 +471,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/leftjoin',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -471,6 +483,8 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) RIght JOIN
 	public static function getRightJoin($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -479,7 +493,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/rightjoin',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/join.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -489,6 +505,8 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Union
 	public static function getUnion($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -497,7 +515,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/union',[]),
 	            'link' =>'https://dev.mysql.com/doc/refman/5.7/en/union.html'
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -507,6 +527,8 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Referencias
 	public static function getReferencias($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
@@ -515,7 +537,9 @@ class Tutorial extends Page{
 	            'descricao' => View::render('pages/tutorial/comandosSql/referencias',[]),
 	            'link' =>''
 	        ]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
