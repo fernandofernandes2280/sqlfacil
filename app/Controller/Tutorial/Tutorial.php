@@ -11,11 +11,15 @@ class Tutorial extends Page{
     
 	//retorna o conteudo (view) da nossa página de sobre
 	public static function getTutorial($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 		//View da 
 		$content = View::render('pages/tutorial/index',[
 		    
 		    'comandosSql' => '',
-		    'treineSql' => ''
+		    'treineSql' => View::render('pages/tutorial/treinesql',[
+		        'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+		    ]),
 		]);
 		
 		//Retorna a página completa
@@ -25,11 +29,15 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Tutorial Antes de Começar
 	public static function getAntesdeComecar($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/antesdecomecar',[]),
-	        'treineSql' => View::render('pages/tutorial/treinesql',[]),
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -39,11 +47,15 @@ class Tutorial extends Page{
 
 	//retorna o conteudo (view) Tutoral O que é Sql
 	public static function getOqueeSql($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/oqueesql',[]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
@@ -53,11 +65,15 @@ class Tutorial extends Page{
 	
 	//retorna o conteudo (view) Tutoral Introducao a Banco de Dados
 	public static function getIntroducaoaBancodeDados($request){
+	    //Inicia a sessão
+	    Funcoes::init();
 	    //View da
 	    $content = View::render('pages/tutorial/index',[
 	        
 	        'comandosSql' => View::render('pages/tutorial/comandosSql/introducaoabancodedados',[]),
-	        'treineSql' => ''
+	        'treineSql' => View::render('pages/tutorial/treinesql',[
+	            'nomeBanco' => @$_SESSION['nomeBanco'] ?? ''
+	        ]),
 	    ]);
 	    
 	    //Retorna a página completa
