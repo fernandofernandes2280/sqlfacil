@@ -24,6 +24,6 @@ include __DIR__.'/routes/admin.php';
 //Inclui as da API
 include __DIR__.'/routes/api.php';
 
-//Imprime o response da Rota teste
+//Imprime o response da Rota tested
 $obRouter->run()
 				->sendResponse();
