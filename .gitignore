@@ -1,3 +1,4 @@
 /.env
 /.env.exemple
 /resources/assets/js/pages.js
+/app/Controller/Ajax/TreineSql.php
