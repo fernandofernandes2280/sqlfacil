@@ -10,7 +10,7 @@
     
     #toastBox {
         position: absolute;
-        top: 0px;
+        top: 330px;
         right: 30px;
         display: flex;
         align-items: center;
@@ -19,7 +19,7 @@
         padding: 20px;
     }
     
-    .toast {
+    .toast{
         width: 400px;
         height: 80px;
         background: #fff;
@@ -34,7 +34,7 @@
         animation: moveLeft 0.4s linear forwards;
     }
     .toastErro {
-        width: 400px;
+        width: 150px;
         height: 80px;
         background: #e4b9b9;
         color: red;
@@ -46,10 +46,10 @@
         position: relative;
         border-radius: 5px;
         transform: translateX(100%);
-        animation: moveLeft 0.4s linear forwards;
+        animation: moveLeft 0.2s linear forwards;
     }
     .toastSuccess {
-        width: 400px;
+        width: 150px;
         height: 80px;
         background: rgba(152,251,152);
         color: green;
@@ -61,7 +61,7 @@
         position: relative;
         border-radius: 5px;
         transform: translateX(100%);
-        animation: moveLeft 0.4s linear forwards;
+        animation: moveLeft 0.2s linear forwards;
     }
   
     
